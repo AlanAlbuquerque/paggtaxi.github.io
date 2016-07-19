@@ -2,10 +2,17 @@ define({ "api": [
   {
     "type": "post",
     "url": "/transactions/",
-    "title": "Request transactions",
+    "title": "Get transactions by period",
     "name": "GetTransactions",
     "group": "Transactions",
     "parameter": {
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userId\": 9999,\n    \"token\": \"4dq-fe1afef7ce8141a24576\",\n    \"transactions\": {\n        \"create_at_lte\": \"2016-07-19T11:00:00-0300\"\n    }\n}",
+          "type": "json"
+        }
+      ],
       "fields": {
         "Parameter": [
           {
@@ -30,248 +37,370 @@ define({ "api": [
             "description": "<p>List of search filters [&quot;create_at_lte&quot;, &quot;create_at_gte&quot;, &quot;create_at_date&quot;]</p>"
           }
         ]
-      },
-      "examples": [
-        {
-          "title": "Request-Example:",
-          "content": "{\n    \"userId\": 9999,\n    \"token\": \"4dq-fe1afef7ce8141a24576\",\n    \"transactions\": {\n        \"create_at_lte\": \"2016-07-19T11:00:00-0300\"\n    }\n}",
-          "type": "json"
-        }
-      ]
+      }
     },
     "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"datetime_sync\": \"2016-07-19T17:35:48-0300\",\n  \"errorMessage\": \"\",\n  \"userId\": 6099,\n  \"success\": true,\n  \"transactions\": {\n    \"precreate\": [\n      {\n        \"amount\": \"48.65\",\n        \"transaction_reference\": null,\n        \"time_to_pass\": null,\n        \"payment_type\": \"CREDIT\",\n        \"provider\": \"STONE\",\n        \"reversed\": false,\n        \"initiator_transaction_identification\": \"64762495-90970059919646200858199998-90245202900\",\n        \"transaction_status\": \"PRECREATED\",\n        \"create_at\": \"2016-07-19T10:16:56-0300\",\n        \"transaction_id\": null\n      }\n    ],\n    \"voucher\": [\n      {\n        \"start_at\": \"2016-06-23T10:09:11-0300\",\n        \"create_at\": \"2016-06-23T08:12:16-0300\",\n        \"finish_at\": \"2016-06-23T10:17:04-0300\",\n        \"amount\": \"14.25\",\n        \"voucher\": \"fkbg\",\n        \"offline\": false,\n        \"os\": \"2695792\"\n      }\n    ],\n    \"card_transaction\": [\n      {\n        \"amount\": \"22.65\",\n        \"initiator_transaction_identification\": \"18064762508-619300274310433\",\n        \"time_to_pass\": \"00m 02s\",\n        \"payment_type\": \"DEBIT\",\n        \"provider\": \"STONE\",\n        \"reversed\": false,\n        \"transaction_reference\": \"29360107039272\",\n        \"transaction_status\": \"CREATED\",\n        \"create_at\": \"2016-07-11T10:23:55-0300\",\n        \"transaction_id\": \"897a9\"\n      },\n      {\n        \"amount\": \"21.10\",\n        \"initiator_transaction_identification\": null,\n        \"time_to_pass\": null,\n        \"payment_type\": \"CREDIT\",\n        \"provider\": \"ZOOP\",\n        \"reversed\": false,\n        \"transaction_reference\": \"2fce816ef4bc48c98d16ca6ec1059d09\",\n        \"transaction_status\": \"CREATED\",\n        \"create_at\": \"2015-09-01T00:28:21-0300\",\n        \"transaction_id\": null\n      }\n    ]\n  }\n}",
+          "type": "json"
+        }
+      ],
       "fields": {
-        "root": [
+        "Success 200": [
           {
-            "group": "root",
+            "group": "Success 200",
             "type": "Integer",
             "optional": false,
             "field": "userId",
             "description": "<p>id of the User in Paggtaxi server</p>"
           },
           {
-            "group": "root",
+            "group": "Success 200",
             "type": "Boolean",
             "optional": false,
             "field": "success",
             "description": "<p>Result of request</p>"
           },
           {
-            "group": "root",
+            "group": "Success 200",
             "type": "Array",
             "optional": false,
             "field": "transactions",
             "description": "<p>List containing the transactions</p>"
-          }
-        ],
-        "[node] transactions": [
+          },
           {
-            "group": "[node] transactions",
+            "group": "Success 200",
             "type": "Array",
             "optional": false,
-            "field": "precreate",
+            "field": "transactions.precreate",
             "description": "<p>List containing the &quot;precreate&quot; transactions</p>"
           },
           {
-            "group": "[node] transactions",
+            "group": "Success 200",
             "type": "Array",
             "optional": false,
-            "field": "voucher",
+            "field": "transactions.voucher",
             "description": "<p>List containing the &quot;voucher&quot; transactions</p>"
           },
           {
-            "group": "[node] transactions",
+            "group": "Success 200",
             "type": "Array",
             "optional": false,
-            "field": "card_transaction",
+            "field": "transactions.card_transaction",
             "description": "<p>List containing the &quot;card&quot; transactions</p>"
-          }
-        ],
-        "[item] precreate": [
+          },
           {
-            "group": "[item] precreate",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "seller_id",
+            "field": "transactions.precreate.seller_id",
             "description": "<p>CPF of driver</p>"
           },
           {
-            "group": "[item] precreate",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "initiator_transaction_identification",
+            "field": "transactions.precreate.initiator_transaction_identification",
             "description": "<p>ID created by Paggtaxi APP before the transaction go to the acquirer</p>"
           },
           {
-            "group": "[item] precreate",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "create_at",
+            "field": "transactions.precreate.create_at",
             "description": "<p>DATETIME (ISO8601)</p>"
           },
           {
-            "group": "[item] precreate",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "amount",
+            "field": "transactions.precreate.amount",
             "description": "<p>Gross amount of transaction</p>"
           },
           {
-            "group": "[item] precreate",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "payment_type",
+            "field": "transactions.precreate.payment_type",
             "description": "<p>&quot;DEBIT&quot; or &quot;CREDIT&quot;</p>"
           },
           {
-            "group": "[item] precreate",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "provider",
+            "field": "transactions.precreate.provider",
             "description": "<p>&quot;STONE&quot; or &quot;ZOOP&quot;</p>"
-          }
-        ],
-        "[item] voucher": [
+          },
           {
-            "group": "[item] voucher",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "start_at",
+            "field": "transactions.voucher.start_at",
             "description": "<p>Date of start ride - DATETIME (ISO8601)</p>"
           },
           {
-            "group": "[item] voucher",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "create_at",
+            "field": "transactions.voucher.create_at",
             "description": "<p>Date of voucher creation - DATETIME (ISO8601)</p>"
           },
           {
-            "group": "[item] voucher",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "finish_at",
+            "field": "transactions.voucher.finish_at",
             "description": "<p>Date of finish ride - DATETIME (ISO8601)</p>"
           },
           {
-            "group": "[item] voucher",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "amount",
+            "field": "transactions.voucher.amount",
             "description": "<p>Gross amount of ride</p>"
           },
           {
-            "group": "[item] voucher",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "voucher",
+            "field": "transactions.voucher.voucher",
             "description": "<p>Unique identifier of voucher</p>"
           },
           {
-            "group": "[item] voucher",
+            "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "offline",
+            "field": "transactions.voucher.offline",
             "description": "<p>This ride is created by cab cooperative operators?</p>"
           },
           {
-            "group": "[item] voucher",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "os",
+            "field": "transactions.voucher.os",
             "description": "<p>Unique identifier of ride in cab cooperative system</p>"
-          }
-        ],
-        "[item] card_transaction": [
+          },
           {
-            "group": "[item] card_transaction",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "seller_id",
+            "field": "transactions.card_transaction.seller_id",
             "description": "<p>CPF of driver</p>"
           },
           {
-            "group": "[item] card_transaction",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "initiator_transaction_identification",
+            "field": "transactions.card_transaction.initiator_transaction_identification",
             "description": "<p>ID created by Paggtaxi APP before the transaction go to the acquirer</p>"
           },
           {
-            "group": "[item] card_transaction",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "create_at",
+            "field": "transactions.card_transaction.create_at",
             "description": "<p>DATETIME (ISO8601)</p>"
           },
           {
-            "group": "[item] card_transaction",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "amount",
+            "field": "transactions.card_transaction.amount",
             "description": "<p>Gross amount of transaction</p>"
           },
           {
-            "group": "[item] card_transaction",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "payment_type",
+            "field": "transactions.card_transaction.payment_type",
             "description": "<p>&quot;DEBIT&quot; or &quot;CREDIT&quot;</p>"
           },
           {
-            "group": "[item] card_transaction",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "provider",
+            "field": "transactions.card_transaction.provider",
             "description": "<p>&quot;STONE&quot; or &quot;ZOOP&quot;</p>"
           },
           {
-            "group": "[item] card_transaction",
+            "group": "Success 200",
             "type": "Boolean",
             "optional": false,
-            "field": "reversed",
+            "field": "transactions.card_transaction.reversed",
             "description": "<p>This transaction was reversed?</p>"
           },
           {
-            "group": "[item] card_transaction",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "transaction_id",
+            "field": "transactions.card_transaction.transaction_id",
             "description": "<p>Transaction ID</p>"
           },
           {
-            "group": "[item] card_transaction",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "transaction_reference",
+            "field": "transactions.card_transaction.transaction_reference",
             "description": "<p>Transaction receipt number in acquirer</p>"
           },
           {
-            "group": "[item] card_transaction",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "time_to_pass",
+            "field": "transactions.card_transaction.time_to_pass",
             "description": "<p>Time to pass the transaction in the PIN pad</p>"
           },
           {
-            "group": "[item] card_transaction",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "transaction_status",
-            "description": "<p>&quot;CREATED&quot; or &quot;REVERSED&quot;</p>"
+            "field": "transactions.card_transaction.transaction_status",
+            "description": "<p>&quot;CREATED&quot; or &quot;REVERSED&quot; or &quot;PRECREATED&quot;</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "/home/paggtaxi/myprojects/pagg_taxi/pagg_taxi/apps/api_paggtaxi_app/views/transactions.py",
+    "groupTitle": "Transactions",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "errorMessage",
+            "description": "<p>Description of error</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "Boolean",
+            "optional": false,
+            "field": "success",
+            "description": "<p>Result</p>"
           }
         ]
       },
       "examples": [
         {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"errorMessage\": \"\",\n  \"userId\": 6099,\n  \"success\": true,\n  \"transactions\": {\n    \"precreate\": [\n      {\n        \"seller_id\": \"90245202900\",\n        \"initiator_transaction_identification\": \"64762495-90970059919646200858199998-90245202900\",\n        \"create_at\": \"2016-07-19T10:16:56-0300\",\n        \"amount\": \"48.65\",\n        \"payment_type\": \"CREDIT\",\n        \"provider\": \"STONE\"\n      },\n    ],\n    \"voucher\": [\n      {\n        \"start_at\": \"2016-03-11T14:04:41-0300\",\n        \"create_at\": \"2016-03-11T13:55:58-0300\",\n        \"finish_at\": \"2016-03-11T14:14:28-0300\",\n        \"amount\": \"14.20\",\n        \"voucher\": \"fafi\",\n        \"offline\": false,\n        \"os\": \"2665290\"\n      }\n    ],\n    \"card_transaction\": [\n      {\n        \"reversed\": false,\n        \"transaction_status\": \"CREATED\",\n        \"time_to_pass\": \"00m 02s\",\n        \"transaction_reference\": \"28860104269502\",\n        \"seller_id\": \"90245202900\",\n        \"initiator_transaction_identification\": \"18064762508-618800174311882\",\n        \"create_at\": \"2016-07-06T14:22:30-0300\",\n        \"amount\": \"31.35\",\n        \"payment_type\": \"DEBIT\",\n        \"provider\": \"STONE\",\n        \"transaction_id\": \"18064762508-618800174311882\"\n      },\n    ]\n  }\n}",
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 400 BAD REQUEST\n{\n  \"errorMessage\": \"Invalid search parameters\",\n  \"success\": false\n}",
           "type": "json"
         }
       ]
+    }
+  },
+  {
+    "type": "post",
+    "url": "/transactions/",
+    "title": "Get transaction",
+    "name": "GetTransactionsOne",
+    "group": "Transactions",
+    "parameter": {
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userId\": 9999,\n    \"token\": \"4dq-fe1afef7ce8141a24576\",\n    \"transaction\": {\n        \"initiator_transaction_identification\": \"64762495-90970059919646200858199998-90245202900\" # WHEN STONE\n        \"transaction_reference\": \"2fce816ef4bc48c98d16ca6ec1059d09\" # WHEN ZOOP\n        \"voucher\": \"abcd\" # WHEN VOUCHER\n    }\n}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>Driver user id in Paggtaxi (Given in login request)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>Session token of driver user (Given in login request)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": false,
+            "field": "transaction",
+            "description": "<p>Transaction identifier to search</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "[STONE or ZOOP] Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"errorMessage\": \"\",\n  \"userId\": 6099,\n  \"success\": true,\n  \"transactions\": {\n    \"amount\": \"21.10\",\n    \"initiator_transaction_identification\": null,\n    \"time_to_pass\": null,\n    \"payment_type\": \"CREDIT\",\n    \"provider\": \"ZOOP\",\n    \"reversed\": false,\n    \"transaction_reference\": \"2fce816ef4bc48c98d16ca6ec1059d09\",\n    \"transaction_status\": \"CREATED\",\n    \"create_at\": \"2015-09-01T00:28:21-0300\",\n    \"transaction_id\": null\n  }\n}",
+          "type": "json"
+        },
+        {
+          "title": "[VOUCHER] Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"errorMessage\": \"\",\n  \"userId\": 6099,\n  \"success\": true,\n  \"transactions\": {\n    \"start_at\": \"2016-06-23T10:09:11-0300\",\n    \"create_at\": \"2016-06-23T08:12:16-0300\",\n    \"finish_at\": \"2016-06-23T10:17:04-0300\",\n    \"amount\": \"14.25\",\n    \"voucher\": \"fkbg\",\n    \"offline\": false,\n    \"os\": \"2695792\"\n  }\n}",
+          "type": "json"
+        }
+      ],
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>id of the User in Paggtaxi server</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "success",
+            "description": "<p>Result of request</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "transactions",
+            "description": "<p>List containing the transaction information</p>"
+          }
+        ]
+      }
     },
     "version": "0.0.0",
     "filename": "/home/paggtaxi/myprojects/pagg_taxi/pagg_taxi/apps/api_paggtaxi_app/views/transactions.py",
-    "groupTitle": "Transactions"
+    "groupTitle": "Transactions",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "errorMessage",
+            "description": "<p>Description of error</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "Boolean",
+            "optional": false,
+            "field": "success",
+            "description": "<p>Result</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 400 BAD REQUEST\n{\n  \"errorMessage\": \"Invalid search parameters\",\n  \"success\": false\n}",
+          "type": "json"
+        }
+      ]
+    }
   }
 ] });
