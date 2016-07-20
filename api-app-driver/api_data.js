@@ -196,21 +196,21 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "transactions.created_at_gte",
-            "description": ""
+            "description": "<p>DATETIME (ISO8601)</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "transactions.created_at_lte",
-            "description": ""
+            "description": "<p>DATETIME (ISO8601)</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "transactions.datetime_sync",
-            "description": ""
+            "description": "<p>DATETIME (ISO8601)</p>"
           },
           {
             "group": "Parameter",
