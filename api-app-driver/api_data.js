@@ -217,7 +217,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "transactions.card_status",
-            "description": "<p>enum(&quot;REVERSED&quot;, &quot;CREATED&quot;, &quot;ALL&quot;) choose ALL or not pass this filter to return all transactions</p>"
+            "description": "<p>enum(&quot;REVERSED&quot;, &quot;CREATED&quot;, &quot;ALL&quot;) pass &quot;ALL&quot; or not pass this filter to return all transactions</p>"
           }
         ]
       }
