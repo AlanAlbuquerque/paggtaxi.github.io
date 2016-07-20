@@ -157,7 +157,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Request-Example:",
-          "content": "{\n    \"userId\": 9999,\n    \"token\": \"4dq-fe1afef7ce8141a24576\",\n    \"transactions\": {\n        \"create_at_lte\": \"2016-07-19T11:00:00-0300\"\n    }\n}",
+          "content": "{\n    \"userId\": 9999,\n    \"token\": \"4dq-fe1afef7ce8141a24576\",\n    \"transactions\": {\n        \"created_at_lte\": \"2016-07-19T11:00:00-0300\"\n    }\n}",
           "type": "json"
         }
       ],
@@ -182,7 +182,42 @@ define({ "api": [
             "type": "Array",
             "optional": false,
             "field": "transactions",
-            "description": "<p>List of search filters [&quot;create_at_lte&quot;, &quot;create_at_gte&quot;, &quot;create_at_date&quot;]</p>"
+            "description": "<p>List of search filters [&quot;created_at_lte&quot;, &quot;created_at_gte&quot;, &quot;created_at_date&quot;]</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "transactions.created_at_date",
+            "description": "<p>enum(&quot;today&quot;, &quot;last_day&quot;, &quot;this_week&quot;, &quot;last_week&quot;) or DATE (ISO8601)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "transactions.created_at_gte",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "transactions.created_at_lte",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "transactions.datetime_sync",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "transactions.card_status",
+            "description": "<p>enum(&quot;REVERSED&quot;, &quot;CREATED&quot;, &quot;ALL&quot;) choose ALL or not pass this filter to return all transactions</p>"
           }
         ]
       }
@@ -191,7 +226,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"datetime_sync\": \"2016-07-19T17:35:48-0300\",\n  \"errorMessage\": \"\",\n  \"userId\": 6099,\n  \"success\": true,\n  \"transactions\": {\n    \"precreate\": [\n      {\n        \"amount\": \"48.65\",\n        \"transaction_reference\": null,\n        \"time_to_pass\": null,\n        \"payment_type\": \"CREDIT\",\n        \"provider\": \"STONE\",\n        \"reversed\": false,\n        \"initiator_transaction_identification\": \"64762495-90970059919646200858199998-90245202900\",\n        \"transaction_status\": \"PRECREATED\",\n        \"create_at\": \"2016-07-19T10:16:56-0300\",\n        \"transaction_id\": null\n      }\n    ],\n    \"voucher\": [\n      {\n        \"start_at\": \"2016-06-23T10:09:11-0300\",\n        \"create_at\": \"2016-06-23T08:12:16-0300\",\n        \"finish_at\": \"2016-06-23T10:17:04-0300\",\n        \"amount\": \"14.25\",\n        \"voucher\": \"fkbg\",\n        \"offline\": false,\n        \"os\": \"2695792\"\n      }\n    ],\n    \"card_transaction\": [\n      {\n        \"amount\": \"22.65\",\n        \"initiator_transaction_identification\": \"18064762508-619300274310433\",\n        \"time_to_pass\": \"00m 02s\",\n        \"payment_type\": \"DEBIT\",\n        \"provider\": \"STONE\",\n        \"reversed\": false,\n        \"transaction_reference\": \"29360107039272\",\n        \"transaction_status\": \"CREATED\",\n        \"create_at\": \"2016-07-11T10:23:55-0300\",\n        \"transaction_id\": \"897a9\"\n      },\n      {\n        \"amount\": \"21.10\",\n        \"initiator_transaction_identification\": null,\n        \"time_to_pass\": null,\n        \"payment_type\": \"CREDIT\",\n        \"provider\": \"ZOOP\",\n        \"reversed\": false,\n        \"transaction_reference\": \"2fce816ef4bc48c98d16ca6ec1059d09\",\n        \"transaction_status\": \"CREATED\",\n        \"create_at\": \"2015-09-01T00:28:21-0300\",\n        \"transaction_id\": null\n      }\n    ]\n  }\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"datetime_sync\": \"2016-07-19T17:35:48-0300\",\n  \"errorMessage\": \"\",\n  \"userId\": 6099,\n  \"success\": true,\n  \"transactions\": {\n    \"precreate\": [\n      {\n        \"amount\": \"48.65\",\n        \"transaction_reference\": null,\n        \"time_to_pass\": null,\n        \"payment_type\": \"CREDIT\",\n        \"provider\": \"STONE\",\n        \"reversed\": false,\n        \"initiator_transaction_identification\": \"64762495-90970059919646200858199998-90245202900\",\n        \"transaction_status\": \"PRECREATED\",\n        \"created_at\": \"2016-07-19T10:16:56-0300\",\n        \"transaction_id\": null\n      }\n    ],\n    \"voucher\": [\n      {\n        \"start_at\": \"2016-06-23T10:09:11-0300\",\n        \"created_at\": \"2016-06-23T08:12:16-0300\",\n        \"finish_at\": \"2016-06-23T10:17:04-0300\",\n        \"amount\": \"14.25\",\n        \"voucher\": \"fkbg\",\n        \"offline\": false,\n        \"os\": \"2695792\"\n      }\n    ],\n    \"card_transaction\": [\n      {\n        \"amount\": \"22.65\",\n        \"initiator_transaction_identification\": \"18064762508-619300274310433\",\n        \"time_to_pass\": \"00m 02s\",\n        \"payment_type\": \"DEBIT\",\n        \"provider\": \"STONE\",\n        \"reversed\": false,\n        \"transaction_reference\": \"29360107039272\",\n        \"transaction_status\": \"CREATED\",\n        \"created_at\": \"2016-07-11T10:23:55-0300\",\n        \"transaction_id\": \"897a9\"\n      },\n      {\n        \"amount\": \"21.10\",\n        \"initiator_transaction_identification\": null,\n        \"time_to_pass\": null,\n        \"payment_type\": \"CREDIT\",\n        \"provider\": \"ZOOP\",\n        \"reversed\": false,\n        \"transaction_reference\": \"2fce816ef4bc48c98d16ca6ec1059d09\",\n        \"transaction_status\": \"CREATED\",\n        \"created_at\": \"2015-09-01T00:28:21-0300\",\n        \"transaction_id\": null\n      }\n    ]\n  }\n}",
           "type": "json"
         }
       ],
@@ -264,7 +299,7 @@ define({ "api": [
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "transactions.precreate.create_at",
+            "field": "transactions.precreate.created_at",
             "description": "<p>DATETIME (ISO8601)</p>"
           },
           {
@@ -299,7 +334,7 @@ define({ "api": [
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "transactions.voucher.create_at",
+            "field": "transactions.voucher.created_at",
             "description": "<p>Date of voucher creation - DATETIME (ISO8601)</p>"
           },
           {
@@ -355,7 +390,7 @@ define({ "api": [
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "transactions.card_transaction.create_at",
+            "field": "transactions.card_transaction.created_at",
             "description": "<p>DATETIME (ISO8601)</p>"
           },
           {
@@ -492,12 +527,12 @@ define({ "api": [
       "examples": [
         {
           "title": "[STONE or ZOOP] Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"errorMessage\": \"\",\n  \"userId\": 6099,\n  \"success\": true,\n  \"transactions\": {\n    \"amount\": \"21.10\",\n    \"initiator_transaction_identification\": null,\n    \"time_to_pass\": null,\n    \"payment_type\": \"CREDIT\",\n    \"provider\": \"ZOOP\",\n    \"reversed\": false,\n    \"transaction_reference\": \"2fce816ef4bc48c98d16ca6ec1059d09\",\n    \"transaction_status\": \"CREATED\",\n    \"create_at\": \"2015-09-01T00:28:21-0300\",\n    \"transaction_id\": null\n  }\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"errorMessage\": \"\",\n  \"userId\": 6099,\n  \"success\": true,\n  \"transactions\": {\n    \"amount\": \"21.10\",\n    \"initiator_transaction_identification\": null,\n    \"time_to_pass\": null,\n    \"payment_type\": \"CREDIT\",\n    \"provider\": \"ZOOP\",\n    \"reversed\": false,\n    \"transaction_reference\": \"2fce816ef4bc48c98d16ca6ec1059d09\",\n    \"transaction_status\": \"CREATED\",\n    \"created_at\": \"2015-09-01T00:28:21-0300\",\n    \"transaction_id\": null\n  }\n}",
           "type": "json"
         },
         {
           "title": "[VOUCHER] Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"errorMessage\": \"\",\n  \"userId\": 6099,\n  \"success\": true,\n  \"transactions\": {\n    \"start_at\": \"2016-06-23T10:09:11-0300\",\n    \"create_at\": \"2016-06-23T08:12:16-0300\",\n    \"finish_at\": \"2016-06-23T10:17:04-0300\",\n    \"amount\": \"14.25\",\n    \"voucher\": \"fkbg\",\n    \"offline\": false,\n    \"os\": \"2695792\"\n  }\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"errorMessage\": \"\",\n  \"userId\": 6099,\n  \"success\": true,\n  \"transactions\": {\n    \"start_at\": \"2016-06-23T10:09:11-0300\",\n    \"created_at\": \"2016-06-23T08:12:16-0300\",\n    \"finish_at\": \"2016-06-23T10:17:04-0300\",\n    \"amount\": \"14.25\",\n    \"voucher\": \"fkbg\",\n    \"offline\": false,\n    \"os\": \"2695792\"\n  }\n}",
           "type": "json"
         }
       ],
