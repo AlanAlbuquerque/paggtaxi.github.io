@@ -688,7 +688,21 @@
           },
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "Number",
+            "allowedValues": [
+              "\"amex=1\"",
+              "\"visa=2\"",
+              "\"mastercard=3\"",
+              "\"diners=4\"",
+              "\"elo=5\"",
+              "\"aura=6\"",
+              "\"discover=7\"",
+              "\"casa_show=8\"",
+              "\"havan=9\"",
+              "\"hug_card=10\"",
+              "\"andar_aki=11\"",
+              "\"leader_card=12\""
+            ],
             "optional": false,
             "field": "brand",
             "description": "<p>Card brand</p>"
@@ -907,5 +921,63 @@
     "version": "0.0.0",
     "filename": "karte/views/views_charge.py",
     "groupTitle": "Charge"
+  },
+  {
+    "type": "post",
+    "url": "/client",
+    "title": "Create Client information",
+    "name": "PostClient",
+    "group": "Client",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "external_id",
+            "description": "<p>A reference to a external identification</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>A name reference</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 CREATED\n{\n    \"external_id\" = XXX\n    \"name\" = \"Teste\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "FieldMissing",
+            "description": "<p>There is a field missing.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 400 Bad Request\n{\n    \"external_id\": [\"This field is required.\"]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "karte/views/views_client.py",
+    "groupTitle": "Client"
   }
 ]
