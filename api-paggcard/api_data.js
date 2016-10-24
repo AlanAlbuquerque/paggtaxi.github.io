@@ -522,7 +522,7 @@ define({ "api": [
     "groupTitle": "Buyer"
   },
   {
-    "type": "get",
+    "type": "post",
     "url": "/card/:token/is_valid?client_identifier=:client_identifier",
     "title": "Modify Card information",
     "name": "GetCard",
@@ -721,7 +721,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 201 OK\n{\n  \"token\":\"EB5IPYMCR4VWYO2ZXLJQAHA7IA======\",\n  \"token_read\":\"74FP2GE6GJ2B3IRNKJKZZ4HFTQ======\"\n}",
+          "content": "HTTP/1.1 201 OK\n{\n  \"token\":\"EB5IPYMCR4VWYO2ZXLJQAHA7IA======\",\n  \"token_read\":\"74FP2GE6GJ2B3IRNKJKZZ4HFTQ======\",\n  \"client_identifier: '1'\n}",
           "type": "json"
         }
       ]
