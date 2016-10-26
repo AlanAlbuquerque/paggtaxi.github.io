@@ -721,7 +721,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 201 OK\n{\n  \"token\":\"EB5IPYMCR4VWYO2ZXLJQAHA7IA======\",\n  \"token_read\":\"74FP2GE6GJ2B3IRNKJKZZ4HFTQ======\",\n  \"client_identifier: '1'\n}",
+          "content": "HTTP/1.1 201 OK\n{\n  \"token\":\"EB5IPYMCR4VWYO2ZXLJQAHA7IA======\",\n  \"token_read\":\"74FP2GE6GJ2B3IRNKJKZZ4HFTQ======\",\n  \"client_identifier\": '1'\n}",
           "type": "json"
         }
       ]
@@ -751,7 +751,7 @@ define({ "api": [
   },
   {
     "type": "put/patch",
-    "url": "/card/:token",
+    "url": "/card/:token/update_info?client_identifier=:client_identifier",
     "title": "Modify Card information",
     "name": "PutCard",
     "group": "Card",
@@ -763,7 +763,14 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "token",
-            "description": "<p>Token that identifies the user</p>"
+            "description": "<p>Token read that identifies the user</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "client_identifier",
+            "description": "<p>Client identifier that identifier the card</p>"
           },
           {
             "group": "Parameter",
