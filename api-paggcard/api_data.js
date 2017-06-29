@@ -1,528 +1,6 @@
 define({ "api": [
   {
     "type": "post",
-    "url": "/address",
-    "title": "Create Address information",
-    "name": "PostAddress",
-    "group": "Address",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>Token written that identifies the user</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "allowedValues": [
-              "\"Billing\"",
-              "\"Shipping\"",
-              "\"Comercial\"",
-              "\"Residential\""
-            ],
-            "optional": false,
-            "field": "addressType",
-            "description": "<p>Type of the Address</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "city",
-            "description": "<p>City name</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "complement",
-            "description": "<p>Complement of the Address</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "number",
-            "description": "<p>Address number</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "country",
-            "description": "<p>Country name</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "district",
-            "description": "<p>District name</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "state",
-            "description": "<p>State name</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "street",
-            "description": "<p>Street name</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "zipcode",
-            "description": "<p>Address Zipcode</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"address\": \"Address added.\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 400 Bad Request\n    {\n       \"token\": [\"Token does not exist.\"]\n    }",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "karte/views/views_address.py",
-    "groupTitle": "Address"
-  },
-  {
-    "type": "put/patch",
-    "url": "/address/:token",
-    "title": "Update Address information",
-    "name": "PutAddress",
-    "group": "Address",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>Token written that identifies the user</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "allowedValues": [
-              "\"Billing\"",
-              "\"Shipping\"",
-              "\"Comercial\"",
-              "\"Residential\""
-            ],
-            "optional": false,
-            "field": "addressType",
-            "description": "<p>Type of the Address</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "city",
-            "description": "<p>City name</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "complement",
-            "description": "<p>Complement of the Address</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "number",
-            "description": "<p>Address number</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "country",
-            "description": "<p>Country name</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "district",
-            "description": "<p>District name</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "state",
-            "description": "<p>State name</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "street",
-            "description": "<p>Street name</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "zipcode",
-            "description": "<p>Address Zipcode</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 202 ACCEPTED\n    {\n       \"address\": \"Address updated.\"\n    }",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 400 Bad Request\n    {\n       \"token\": [\"Token does not exist.\"]\n    }",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "karte/views/views_address.py",
-    "groupTitle": "Address"
-  },
-  {
-    "type": "post",
-    "url": "/buyer",
-    "title": "Create Buyer information",
-    "name": "PostBuyer",
-    "group": "Buyer",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "external_id",
-            "description": "<p>A reference to a external identification</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>Client name</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "birth_date",
-            "description": "<p>Client birth date e.g. 1990-08-20T00:00:00-0300</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "buyer_reference",
-            "description": "<p>A reference to the buyer</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "document_number",
-            "description": "<p>Document number</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "allowedValues": [
-              "\"CPF\"",
-              "\"CNPJ\""
-            ],
-            "optional": true,
-            "field": "document_type",
-            "description": "<p>Document type</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "email",
-            "description": "<p>Client email</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "allowedValues": [
-              "\"Comercial\"",
-              "\"Personal\""
-            ],
-            "optional": true,
-            "field": "email_type",
-            "description": "<p>Email type</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "allowedValues": [
-              "\"M\"",
-              "\"F\""
-            ],
-            "optional": true,
-            "field": "gender",
-            "description": "<p>Client gender</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "home_phone",
-            "description": "<p>Client home phone</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "mobile_phone",
-            "description": "<p>Client mobile phone</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "work_phone",
-            "description": "<p>Client work phone</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "allowedValues": [
-              "\"Person\"",
-              "\"Company\""
-            ],
-            "optional": true,
-            "field": "person_type",
-            "description": "<p>Person type</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 201 CREATED\n{\n    \"client\" = XXX\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "FieldMissing",
-            "description": "<p>There is a field missing.</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 400 Bad Request\n{\n    \"external_id\": [\"This field is required.\"]\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "karte/views/views_buyer.py",
-    "groupTitle": "Buyer"
-  },
-  {
-    "type": "put/path",
-    "url": "/buyer/:token",
-    "title": "Update Buyer information",
-    "name": "PutBuyer",
-    "group": "Buyer",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "external_id",
-            "description": "<p>A reference to a external identification</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>Client name</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "birth_date",
-            "description": "<p>Client birth date e.g. 1990-08-20T00:00:00-0300</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "buyer_reference",
-            "description": "<p>A reference to the buyer</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "document_number",
-            "description": "<p>Document number</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "allowedValues": [
-              "\"CPF\"",
-              "\"CNPJ\""
-            ],
-            "optional": true,
-            "field": "document_type",
-            "description": "<p>Document type</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "email",
-            "description": "<p>Client email</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "allowedValues": [
-              "\"Comercial\"",
-              "\"Personal\""
-            ],
-            "optional": true,
-            "field": "email_type",
-            "description": "<p>Email type</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "allowedValues": [
-              "\"M\"",
-              "\"F\""
-            ],
-            "optional": true,
-            "field": "gender",
-            "description": "<p>Client gender</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "home_phone",
-            "description": "<p>Client home phone</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "mobile_phone",
-            "description": "<p>Client mobile phone</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "work_phone",
-            "description": "<p>Client work phone</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "allowedValues": [
-              "\"Person\"",
-              "\"Company\""
-            ],
-            "optional": true,
-            "field": "person_type",
-            "description": "<p>Person type</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 202 Accepted\n{\n   \"buyer\": [\"Buyer updated.\"]\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "DetailNotFound",
-            "description": "<p>Token is invalid or client was not found</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 404 Not Found\n{\n   {\"detail\": \"Not found.\"}\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "karte/views/views_buyer.py",
-    "groupTitle": "Buyer"
-  },
-  {
-    "type": "post",
     "url": "/card/:token/is_valid?client_identifier=:client_identifier",
     "title": "Modify Card information",
     "name": "GetCard",
@@ -658,7 +136,7 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "/card",
+    "url": "/card?version=2",
     "title": "Create Card information",
     "name": "PostCard",
     "group": "Card",
@@ -706,10 +184,43 @@ define({ "api": [
             "optional": false,
             "field": "brand",
             "description": "<p>Card brand</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "token_external",
+            "description": "<p>Mercado Pago Token</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "last_four_digits",
+            "description": "<p>Card last four digits</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "first_six_digits",
+            "description": "<p>Card first six digits</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "issuer_id",
+            "description": "<p>Mercado] Pago Issuer ID</p>"
           }
         ]
       },
       "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    'client': '1',\n    'pan': '49927398716',\n    'card_holder_text': '1444',\n    'brand': '1',\n    'token_external': '12341241ABC',\n    'last_four_digits': 8716,\n    'first_six_digits': 499273,\n    'issuer_id': 1\n}",
+          "type": "json"
+        },
         {
           "title": "Request-Example:",
           "content": "{\n    'client': '1',\n    'pan': '49927398716',\n    'card_holder_text': '1444',\n    'brand': '1'\n}",
@@ -844,7 +355,7 @@ define({ "api": [
         "Parameter": [
           {
             "group": "Parameter",
-            "type": "Number",
+            "type": "String",
             "optional": false,
             "field": "token_text",
             "description": "<p>The card token identification</p>"
@@ -860,7 +371,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "cpf",
+            "field": "doc_number",
             "description": "<p>Customer unique document identification</p>"
           },
           {
@@ -876,6 +387,34 @@ define({ "api": [
             "optional": false,
             "field": "phone",
             "description": "<p>Customer phone number</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "transaction_reprocess_reference",
+            "description": "<p>Original transaction number (when reprocessing)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": true,
+            "field": "reprocess",
+            "description": "<p>If this transaction can be reprocessed</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "ride_id",
+            "description": "<p>Ride identificationa</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "ride_os",
+            "description": "<p>Ride Service Order</p>"
           }
         ]
       },
@@ -887,7 +426,17 @@ define({ "api": [
         },
         {
           "title": "Request-Example:",
-          "content": "{\n    'token_text': token.token_text,\n    'amount_in_cents': amount,\n    'cpf': 'XXXXXXXXXX',\n    'phone': '4141410000'\n}",
+          "content": "{\n    'token_text': token.token_text,\n    'amount_in_cents': amount,\n    'cpf': 'XXXXXXXXXX',\n    'phone': '4141410000'\n\n}",
+          "type": "json"
+        },
+        {
+          "title": "Request-Example:",
+          "content": "{\n    'token_text': token.token_text,\n    'amount_in_cents': amount,\n    'cpf': 'XXXXXXXXXX',\n    'phone': '4141410000',\n    'reprocess': True,\n}",
+          "type": "json"
+        },
+        {
+          "title": "Request-Example:",
+          "content": "{\n    'token_text': token.token_text,\n    'amount_in_cents': amount,\n    'cpf': 'XXXXXXXXXX',\n    'phone': '4141410000',\n    'reprocess': False,\n    'ride_os': 123123,\n    'ride_id': 123123,\n    'transaction_reprocess_reference': 1234\n}",
           "type": "json"
         }
       ]
@@ -896,7 +445,17 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 201 OK\n{\n    \"status\":\"APPROVED\",\n    \"AuthorizationCode\":\"022222\",\n    \"message\":\"Aprovado\"\n}",
+          "content": "HTTP/1.1 201 OK\n{\n    \"status\":\"APPROVED\",\n    \"AuthorizationCode\":\"022222\",\n    \"message\":\"Aprovado\",\n    \"order\": 123123,\n    \"transaction_identifier\": 2313221412,\n    \"transaction_reference\": 412412421,\n    \"transaction_reprocess_reference\": ''\n}",
+          "type": "json"
+        },
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 OK\n{\n    \"status\":\"APPROVED\",\n    \"AuthorizationCode\":\"022222\",\n    \"message\":\"Aprovado\",\n    \"order\": 123123,\n    \"transaction_identifier\": 2313221412,\n    \"transaction_reference\": 412412421,\n    \"transaction_reprocess_reference\": ''\n}",
+          "type": "json"
+        },
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 OK\n{\n    \"status\":\"APPROVED\",\n    \"AuthorizationCode\":\"022222\",\n    \"message\":\"Aprovado\",\n    \"order\": 123123,\n    \"transaction_identifier\": 2313221412,\n    \"transaction_reference\": 412412421,\n    \"transaction_reprocess_reference\": 1234\n}",
           "type": "json"
         }
       ]
@@ -922,6 +481,11 @@ define({ "api": [
           "title": "Error-Response:",
           "content": "HTTP/1.1 406 Not Acceptable\n{\n   \"data\": [\"Parameter missing\"]\n}",
           "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Acceptable\n{\n   \"detail\": [\"Not found\"]\n}",
+          "type": "json"
         }
       ]
     },
@@ -930,8 +494,47 @@ define({ "api": [
     "groupTitle": "Charge"
   },
   {
+    "type": "get",
+    "url": "/checkout/customer",
+    "title": "Get Customer information",
+    "name": "GetCustomer",
+    "group": "Client",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "merchant_access_token",
+            "description": "<p>Read token</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    'merchant_access_token': '124124124124',\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    MP CUSTOMER\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "karte/views/views_mp.py",
+    "groupTitle": "Client"
+  },
+  {
     "type": "post",
-    "url": "/client",
+    "url": "/client?version=2",
     "title": "Create Client information",
     "name": "PostClient",
     "group": "Client",
@@ -951,15 +554,54 @@ define({ "api": [
             "optional": false,
             "field": "name",
             "description": "<p>A name reference</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "phone_number",
+            "description": "<p>Client phone number</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "phone_area_code",
+            "description": "<p>Client phone are code</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Client email</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "allowedValues": [
+              "\"CPF\"",
+              "\"DNI\""
+            ],
+            "optional": false,
+            "field": "external_id_type",
+            "description": "<p>External identification type</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"external_id\" = 12345678,\n    \"external_id_type\" = \"CPF\"\n    \"name\" = \"Boba Fett\",\n    \"email\" = \"mandalorian@paggcard.com\"\n    \"phone\" = 12314444\n    \"phone_area_code\" = 47\n}",
+          "type": "json"
+        }
+      ]
     },
     "success": {
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 201 CREATED\n{\n    \"external_id\" = XXX\n    \"name\" = \"Teste\"\n}",
+          "content": "HTTP/1.1 201 CREATED\n{\n    \"id\" = 124124\n    \"external_id\" = 12345678,\n    \"external_id_type\" = \"CPF\"\n    \"name\" = \"Teste\",\n    \"email\" = \"test@paggcard.com\"\n    \"phone\" = 12314444\n    \"phone_area_code\" = 47\n}",
           "type": "json"
         }
       ]
