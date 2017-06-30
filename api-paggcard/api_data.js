@@ -2,7 +2,7 @@ define({ "api": [
   {
     "type": "post",
     "url": "/card/:token/is_valid?client_identifier=:client_identifier",
-    "title": "Modify Card information",
+    "title": "Validate Card information",
     "name": "GetCard",
     "group": "Card",
     "sampleRequest": [
