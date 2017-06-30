@@ -5,6 +5,14 @@
     "title": "Modify Card information",
     "name": "GetCard",
     "group": "Card",
+    "sampleRequest": [
+      {
+        "url": "http://www.paggtaxi.com/card/:token/is_valid?client_identifier=:client_identifier&test_mode=True&action=APRO"
+      },
+      {
+        "url": "http://www.paggtaxi.com/card/:token/is_valid?client_identifier=:client_identifier&test_mode=True&action=DENI"
+      }
+    ],
     "parameter": {
       "fields": {
         "Parameter": [
@@ -21,6 +29,20 @@
             "optional": false,
             "field": "client_identifier",
             "description": "<p>Client card identifier</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token_external",
+            "description": "<p>Token Mercado Pago</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "test_mode",
+            "description": ""
           }
         ]
       }
@@ -415,6 +437,13 @@
             "optional": true,
             "field": "ride_os",
             "description": "<p>Ride Service Order</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": true,
+            "field": "test_mode",
+            "description": ""
           }
         ]
       },
