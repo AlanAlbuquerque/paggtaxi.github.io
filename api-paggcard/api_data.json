@@ -119,6 +119,7 @@
     "type": "get",
     "url": "/card/:token",
     "title": "Get a Card List information",
+    "description": "<p>***Only Stone</p>",
     "name": "ListCards",
     "group": "Card",
     "parameter": {
@@ -201,7 +202,16 @@
               "\"havan=9\"",
               "\"hug_card=10\"",
               "\"andar_aki=11\"",
-              "\"leader_card=12\""
+              "\"leader_card=12\"",
+              "\"naranja=13\"",
+              "\"nativa=14\"",
+              "\"tarshop=15\"",
+              "\"cencosud=16\"",
+              "\"cabal=17\"",
+              "\"argencard=18\"",
+              "\"cordial=19\"",
+              "\"cordobesa=20\"",
+              "\"cmr=21\""
             ],
             "optional": false,
             "field": "brand",
@@ -233,7 +243,7 @@
             "type": "Number",
             "optional": true,
             "field": "issuer_id",
-            "description": "<p>Mercado] Pago Issuer ID</p>"
+            "description": "<p>Mercado Pago Issuer ID</p>"
           }
         ]
       },
@@ -526,6 +536,7 @@
     "type": "get",
     "url": "/checkout/customer",
     "title": "Get Customer information",
+    "description": "<p>***Only Mercado Pago</p>",
     "name": "GetCustomer",
     "group": "Client",
     "parameter": {
@@ -610,7 +621,9 @@
             "type": "String",
             "allowedValues": [
               "\"CPF\"",
-              "\"DNI\""
+              "\"DNI\"",
+              "\"CI\"",
+              "\"Otro\""
             ],
             "optional": false,
             "field": "external_id_type",
