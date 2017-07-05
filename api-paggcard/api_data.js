@@ -1,5 +1,46 @@
 define({ "api": [
   {
+    "type": "delete",
+    "url": "/card/:token",
+    "title": "Delete a Card information",
+    "name": "DeleteCard",
+    "group": "Card",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>Reading Token that identifies the user</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 204 NO CONTENT\n    [\n    ]",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 NOT FOUND\n    {\n        \"detail\":\"Not found.\"\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "karte/views/views_card.py",
+    "groupTitle": "Card"
+  },
+  {
     "type": "post",
     "url": "/card/:token/is_valid?client_identifier=:client_identifier",
     "title": "Validate Card information",
@@ -77,8 +118,8 @@ define({ "api": [
   {
     "type": "get",
     "url": "/card/:token",
-    "title": "Get a Card list information",
-    "name": "GetCard",
+    "title": "Get a Card List information",
+    "name": "ListCards",
     "group": "Card",
     "parameter": {
       "fields": {
@@ -107,47 +148,6 @@ define({ "api": [
         {
           "title": "Error-Response:",
           "content": "HTTP/1.1 404 NOT FOUND\n{\n    \"detail\":\"Not found.\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "karte/views/views_card.py",
-    "groupTitle": "Card"
-  },
-  {
-    "type": "get",
-    "url": "/card/:token",
-    "title": "Get a Card list information",
-    "name": "GetCard",
-    "group": "Card",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>Reading Token that identifies the user</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 204 NO CONTENT\n    [\n    ]",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 404 NOT FOUND\n    {\n        \"detail\":\"Not found.\"\n    }",
           "type": "json"
         }
       ]

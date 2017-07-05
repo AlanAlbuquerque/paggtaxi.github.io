@@ -1,6 +1,6 @@
 define({
   "name": "Paggcard",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "description": "A basic Paggcard API example",
   "header": {
     "title": "Paggcard Docs",
@@ -10,7 +10,7 @@ define({
   "apidoc": "0.2.0",
   "generator": {
     "name": "apidoc",
-    "time": "2017-06-30T20:04:49.150Z",
+    "time": "2017-07-05T21:35:57.791Z",
     "url": "http://apidocjs.com",
     "version": "0.16.1"
   }
