@@ -643,7 +643,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 201 CREATED\n{\n    \"id\" = 124124\n    \"external_id\" = 12345678,\n    \"external_id_type\" = \"CPF\"\n    \"name\" = \"Teste\",\n    \"email\" = \"test@paggcard.com\"\n    \"phone\" = 12314444\n    \"phone_area_code\" = 47\n}",
+          "content": "HTTP/1.1 201 CREATED\n{\n    \"id\" = 124124\n    \"external_id\" = 12345678,\n    \"external_id_type\" = \"CPF\"\n    \"name\" = \"Teste\",\n    \"email\" = \"test@paggcard.com\"\n    \"phone\" = 12314444\n    \"phone_area_code\" = 47,\n    \"token_read\" = \"3WPFWQH5AYEG3JNKVU4CMK4E34======\"\n}",
           "type": "json"
         }
       ]
