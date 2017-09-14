@@ -52,6 +52,9 @@ define({ "api": [
       },
       {
         "url": "http://www.paggtaxi.com/card/:token/is_valid?client_identifier=:client_identifier&test_mode=True&action=DENI"
+      },
+      {
+        "url": "http://www.paggtaxi.com/card/:token/is_valid?client_identifier=:client_identifier&force=True"
       }
     ],
     "parameter": {
@@ -80,10 +83,39 @@ define({ "api": [
           },
           {
             "group": "Parameter",
+            "type": "Number",
+            "allowedValues": [
+              "\"Stone=2\"",
+              "\"MercadoPago Argentina=3\"",
+              "\"Decidir Argentina=4\""
+            ],
+            "optional": true,
+            "field": "acquirer",
+            "defaultValue": "2",
+            "description": "<p>Acquirer Number</p>"
+          },
+          {
+            "group": "Parameter",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "test_mode",
             "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": true,
+            "field": "force",
+            "defaultValue": "False",
+            "description": "<p>Force validation even when provider is out of service</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": true,
+            "field": "skip_anti_fraud",
+            "defaultValue": "False",
+            "description": "<p>Skip anti-fraud validation</p>"
           }
         ]
       }
@@ -92,7 +124,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n    {\n        \"brand\":1,\n        \"card_number\":\"*******8716\",\n        \"valid\":false,\n        \"client_identifier\":1\n    }",
+          "content": "HTTP/1.1 200 OK\n    {\n        \"brand\":1,\n        \"card_number\":\"*******8716\",\n        \"valid\":false,\n        \"client_identifier\":1\n        \"acquirer\":2,\n    }",
           "type": "json"
         }
       ]
@@ -244,13 +276,26 @@ define({ "api": [
             "optional": true,
             "field": "issuer_id",
             "description": "<p>Mercado Pago Issuer ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "allowedValues": [
+              "\"Stone=2\"",
+              "\"Mercadopago=3\"",
+              "\"Decidir=4\""
+            ],
+            "optional": true,
+            "field": "acquirer",
+            "defaultValue": "2",
+            "description": "<p>Acquirer</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Request-Example:",
-          "content": "{\n    'client': '1',\n    'pan': '49927398716',\n    'card_holder_text': '1444',\n    'brand': '1',\n    'token_external': '12341241ABC',\n    'last_four_digits': 8716,\n    'first_six_digits': 499273,\n    'issuer_id': 1\n}",
+          "content": "{\n    'client': '1',\n    'pan': '49927398716',\n    'card_holder_text': '1444',\n    'brand': '1',\n    'token_external': '12341241ABC',\n    'last_four_digits': 8716,\n    'first_six_digits': 499273,\n    'issuer_id': 1,\n    'acquirer': 4\n}",
           "type": "json"
         },
         {
@@ -328,6 +373,14 @@ define({ "api": [
             "optional": false,
             "field": "valid_date",
             "description": "<p>Card expiration date</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": true,
+            "field": "skip_anti_fraud",
+            "defaultValue": "False",
+            "description": "<p>Skip anti-fraud validation</p>"
           }
         ]
       },
@@ -450,6 +503,19 @@ define({ "api": [
           },
           {
             "group": "Parameter",
+            "type": "Number",
+            "allowedValues": [
+              "\"Stone=2\"",
+              "\"MercadoPago Argentina=3\"",
+              "\"Decidir Argentina=4\""
+            ],
+            "optional": true,
+            "field": "acquirer",
+            "defaultValue": "2",
+            "description": "<p>Acquirer Number</p>"
+          },
+          {
+            "group": "Parameter",
             "type": "Boolean",
             "optional": true,
             "field": "test_mode",
@@ -471,6 +537,11 @@ define({ "api": [
         {
           "title": "Request-Example:",
           "content": "{\n    'token_text': token.token_text,\n    'amount_in_cents': amount,\n    'cpf': 'XXXXXXXXXX',\n    'phone': '4141410000',\n    'reprocess': True,\n}",
+          "type": "json"
+        },
+        {
+          "title": "Request-Example:",
+          "content": "{\n    'token_text': token.token_text,\n    'amount_in_cents': amount,\n    'cpf': 'XXXXXXXXXX',\n    'phone': '4141410000',\n    'reprocess': True,\n    'acquirer': 2\n}",
           "type": "json"
         },
         {
@@ -634,7 +705,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Request-Example:",
-          "content": "{\n    \"external_id\" = 12345678,\n    \"external_id_type\" = \"CPF\"\n    \"name\" = \"Boba Fett\",\n    \"email\" = \"mandalorian@paggcard.com\"\n    \"phone\" = 12314444\n    \"phone_area_code\" = 47\n}",
+          "content": "{\n    \"external_id\" = 12345678,\n    \"external_id_type\" = \"CPF\"\n    \"name\" = \"Boba Fett\",\n    \"email\" = \"mandalorian@paggcard.com\"\n    \"phone_number\" = 12314444\n    \"phone_area_code\" = 47\n}",
           "type": "json"
         }
       ]
@@ -643,7 +714,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 201 CREATED\n{\n    \"id\" = 124124\n    \"external_id\" = 12345678,\n    \"external_id_type\" = \"CPF\"\n    \"name\" = \"Teste\",\n    \"email\" = \"test@paggcard.com\"\n    \"phone\" = 12314444\n    \"phone_area_code\" = 47,\n    \"token_read\" = \"3WPFWQH5AYEG3JNKVU4CMK4E34======\"\n}",
+          "content": "HTTP/1.1 201 CREATED\n{\n    \"id\" = 124124\n    \"external_id\" = 12345678,\n    \"external_id_type\" = \"CPF\"\n    \"name\" = \"Teste\",\n    \"email\" = \"test@paggcard.com\"\n    \"phone_number\" = 12314444\n    \"phone_area_code\" = 47,\n    \"token_read\" = \"3WPFWQH5AYEG3JNKVU4CMK4E34======\"\n}",
           "type": "json"
         }
       ]
