@@ -520,6 +520,13 @@ define({ "api": [
             "optional": true,
             "field": "test_mode",
             "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "short_name",
+            "description": ""
           }
         ]
       },
