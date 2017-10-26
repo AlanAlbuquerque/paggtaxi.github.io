@@ -527,6 +527,13 @@ define({ "api": [
             "optional": true,
             "field": "short_name",
             "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "description",
+            "description": "<p>optional text field, it will be send to Paggtaxi</p>"
           }
         ]
       },
