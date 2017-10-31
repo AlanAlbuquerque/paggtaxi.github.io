@@ -560,7 +560,7 @@ define({ "api": [
         },
         {
           "title": "Request-Example:",
-          "content": "{\n    'token_text': token.token_text,\n    'amount_in_cents': amount,\n    'cpf': 'XXXXXXXXXX',\n    'phone': '4141410000',\n    'reprocess': False,\n    'ride_os': 123123,\n    'ride_id': 123123,\n    'transaction_reprocess_reference': 1234\n}",
+          "content": "{\n    'token_text': token.token_text,\n    'amount_in_cents': amount,\n    'cpf': 'XXXXXXXXXX',\n    'phone': '4141410000',\n    'reprocess': False,\n    'ride_os': 123123,\n    'ride_id': 123123,\n    'transaction_reprocess_reference': 1234,\n    \"acquirer\": 4\n}",
           "type": "json"
         }
       ]
@@ -574,12 +574,12 @@ define({ "api": [
         },
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 201 OK\n{\n    \"status\":\"APPROVED\",\n    \"AuthorizationCode\":\"022222\",\n    \"message\":\"Aprovado\",\n    \"order\": 123123,\n    \"transaction_identifier\": 2313221412,\n    \"transaction_reference\": 412412421,\n    \"transaction_reprocess_reference\": ''\n}",
+          "content": "HTTP/1.1 201 OK\n{\n    \"status\":\"APPROVED\",\n    \"AuthorizationCode\":\"022222\",\n    \"message\":\"Aprovado\",\n    \"order\": 123123,\n    \"transaction_identifier\": 2313221412,\n    \"transaction_reference\": 412412421,\n    \"transaction_reprocess_reference\": '',\n    \"acquirer\": 2\n}",
           "type": "json"
         },
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 201 OK\n{\n    \"status\":\"APPROVED\",\n    \"AuthorizationCode\":\"022222\",\n    \"message\":\"Aprovado\",\n    \"order\": 123123,\n    \"transaction_identifier\": 2313221412,\n    \"transaction_reference\": 412412421,\n    \"transaction_reprocess_reference\": 1234\n}",
+          "content": "HTTP/1.1 201 OK\n{\n    \"status\":\"APPROVED\",\n    \"AuthorizationCode\":\"022222\",\n    \"message\":\"Aprovado\",\n    \"order\": 123123,\n    \"transaction_identifier\": 2313221412,\n    \"transaction_reference\": 412412421,\n    \"transaction_reprocess_reference\": 1234,\n    \"acquirer\": 4\n}",
           "type": "json"
         }
       ]
