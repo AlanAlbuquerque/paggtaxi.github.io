@@ -534,6 +534,20 @@
             "optional": true,
             "field": "description",
             "description": "<p>optional text field, it will be send to Paggtaxi</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": true,
+            "field": "pay_denied",
+            "description": "<p>Pay the driver even if it is not approved.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": true,
+            "field": "hold_payment",
+            "description": "<p>Charge card but do not pay driver</p>"
           }
         ]
       },
