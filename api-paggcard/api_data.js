@@ -251,13 +251,6 @@ define({ "api": [
           },
           {
             "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "token_external",
-            "description": "<p>Mercado Pago Token</p>"
-          },
-          {
-            "group": "Parameter",
             "type": "Number",
             "optional": true,
             "field": "last_four_digits",
@@ -273,21 +266,14 @@ define({ "api": [
           {
             "group": "Parameter",
             "type": "Number",
-            "optional": true,
-            "field": "issuer_id",
-            "description": "<p>Mercado Pago Issuer ID</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
             "allowedValues": [
               "\"Stone=2\"",
-              "\"Mercadopago=3\"",
-              "\"Decidir=4\""
+              "\"Decidir=4\"",
+              "\"Rede=5\""
             ],
             "optional": true,
             "field": "acquirer",
-            "defaultValue": "2",
+            "defaultValue": "5",
             "description": "<p>Acquirer</p>"
           }
         ]
@@ -548,6 +534,17 @@ define({ "api": [
             "optional": true,
             "field": "hold_payment",
             "description": "<p>Charge card but do not pay driver</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "allowedValues": [
+              "\"Credit=0\"",
+              "\"Debit=1\""
+            ],
+            "optional": true,
+            "field": "operation",
+            "description": "<p>Charge operation</p>"
           }
         ]
       },
