@@ -76,22 +76,15 @@ define({ "api": [
           },
           {
             "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "token_external",
-            "description": "<p>Token Mercado Pago</p>"
-          },
-          {
-            "group": "Parameter",
             "type": "Number",
             "allowedValues": [
               "\"Stone=2\"",
-              "\"MercadoPago Argentina=3\"",
-              "\"Decidir Argentina=4\""
+              "\"Decidir Argentina=4\"",
+              "\"Rede=5\""
             ],
             "optional": true,
             "field": "acquirer",
-            "defaultValue": "2",
+            "defaultValue": "5",
             "description": "<p>Acquirer Number</p>"
           },
           {
@@ -492,12 +485,12 @@ define({ "api": [
             "type": "Number",
             "allowedValues": [
               "\"Stone=2\"",
-              "\"MercadoPago Argentina=3\"",
-              "\"Decidir Argentina=4\""
+              "\"Decidir Argentina=4\"",
+              "\"Rede=5\""
             ],
             "optional": true,
             "field": "acquirer",
-            "defaultValue": "2",
+            "defaultValue": "5",
             "description": "<p>Acquirer Number</p>"
           },
           {
@@ -627,46 +620,6 @@ define({ "api": [
     "version": "0.0.0",
     "filename": "karte/views/views_charge.py",
     "groupTitle": "Charge"
-  },
-  {
-    "type": "get",
-    "url": "/checkout/customer",
-    "title": "Get Customer information",
-    "description": "<p>***Only Mercado Pago</p>",
-    "name": "GetCustomer",
-    "group": "Client",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "merchant_access_token",
-            "description": "<p>Read token</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Request-Example:",
-          "content": "{\n    'merchant_access_token': '124124124124',\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    MP CUSTOMER\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "karte/views/views_mp.py",
-    "groupTitle": "Client"
   },
   {
     "type": "post",
