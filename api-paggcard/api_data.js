@@ -281,7 +281,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Request-Example:",
-          "content": "{\n    'client': '1',\n    'pan': '49927398716',\n    'card_holder_text': '1444',\n    'brand': '1',\n    'token_external': '12341241ABC',\n    'last_four_digits': 8716,\n    'first_six_digits': 499273,\n    'issuer_id': 1,\n    'acquirer': 4\n}",
+          "content": "{\n    'client': '1',\n    'pan': '49927398716',\n    'card_holder_text': '1444',\n    'brand': '1',\n    'last_four_digits': 8716,\n    'first_six_digits': 499273,\n    'acquirer': 4\n}",
           "type": "json"
         },
         {
