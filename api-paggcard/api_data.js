@@ -410,7 +410,7 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "/charge",
+    "url": "/charge/",
     "title": "Create a new charge transaction",
     "name": "PostCharge",
     "group": "Charge",
@@ -436,7 +436,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "doc_number",
-            "description": "<p>Customer unique document identification</p>"
+            "description": "<p>Customer unique document identification - identifies the account to be paid</p>"
           },
           {
             "group": "Parameter",
@@ -519,14 +519,14 @@ define({ "api": [
             "type": "Boolean",
             "optional": true,
             "field": "pay_denied",
-            "description": "<p>Pay the driver even if it is not approved.</p>"
+            "description": "<p>Pay the client even if it is not approved.</p>"
           },
           {
             "group": "Parameter",
             "type": "Boolean",
             "optional": true,
             "field": "hold_payment",
-            "description": "<p>Charge card but do not pay driver</p>"
+            "description": "<p>Charge card but do not pay client</p>"
           },
           {
             "group": "Parameter",
@@ -538,6 +538,27 @@ define({ "api": [
             "optional": true,
             "field": "operation",
             "description": "<p>Charge operation</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "installments",
+            "description": "<p>Installments count</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "force_charge",
+            "description": "<p>Charge card even when blocked</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": true,
+            "field": "late_process",
+            "description": "<p>Charge and wait for document</p>"
           }
         ]
       },
@@ -619,6 +640,98 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "karte/views/views_charge.py",
+    "groupTitle": "Charge"
+  },
+  {
+    "type": "put",
+    "url": "/set_document/",
+    "title": "Set a document for a specific transaction",
+    "name": "PostSetDocument",
+    "group": "Charge",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "transaction_reprocess_reference",
+            "description": "<p>PaggCard transaction_id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "order",
+            "description": "<p>Order Number</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "doc_number",
+            "description": "<p>New document number</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"transaction_reprocess_reference\" = 12345678,\n    \"order\" = 12324,\n    \"document_number\" = \"12312451\",\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 CREATED\n{\n    \"id\" = 124124\n    \"status\" = \"OK\",\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "FieldMissing",
+            "description": "<p>There is a field missing.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 400 Bad Request\n{\n    \"transaction_reprocess_reference\": [\"This field is required.\"]\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Bad Request\n{\n    \"status\": \"NOT_FOUND\"\n    \"message\": \"transaction or order does not exists\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 400 Bad Request\n{\n    \"status\": \"NOT_FOUND\"\n    \"message\": \"transaction does not exists\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 500 Internal Server Error\n{\n    \"status\": \"ERROR\"\n    \"message\": \"internal server error\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 503 Service Unavailable\n{\n    \"status\": \"ERROR\"\n    \"message\": \"service unavailable\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "karte/views/views_set_document.py",
     "groupTitle": "Charge"
   },
   {
