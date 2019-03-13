@@ -735,6 +735,71 @@
     "groupTitle": "Charge"
   },
   {
+    "type": "put/patch",
+    "url": "/chargeback",
+    "title": "Chargeback",
+    "name": "PutCharge",
+    "group": "Charge",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "transaction_id",
+            "description": "<p>Transaction Reprocess Identifier</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "test_mode",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"transaction_id\": \"12/2019\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200\n{\n    \"success\" = True,\n    \"message\" = \"\",\n    \"transaction_identifier\" = 9999\n\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "CardNotFound",
+            "description": "<p>The id of the Card was not found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 400 BAD REQUEST\n{\n    \"success\": False,\n    \"message\": \"Chargeback failed, please check transaction status. \"\n                             \"If the problem still persists contact support.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "karte/views/views_transactions.py",
+    "groupTitle": "Charge"
+  },
+  {
     "type": "post",
     "url": "/client?version=2",
     "title": "Create Client information",
