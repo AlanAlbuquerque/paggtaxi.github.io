@@ -762,7 +762,7 @@
       "examples": [
         {
           "title": "Request-Example:",
-          "content": "{\n    \"transaction_id\": \"12/2019\"\n}",
+          "content": "{\n    \"transaction_id\": \"122019\"\n}",
           "type": "json"
         }
       ]
